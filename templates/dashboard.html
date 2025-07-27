@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - TarHeel Budgeter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Dashboard</h2>
+      <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+
+    <div class="card mb-4 p-3 shadow-sm">
+      <h4 class="mb-3">Add New Expense</h4>
+      <form method="POST" action="/add_expense" class="row g-3">
+        <div class="col-md-6">
+          <input type="text" name="category" class="form-control" placeholder="Category" required>
+        </div>
+        <div class="col-md-4">
+          <input type="number" step="0.01" name="amount" class="form-control" placeholder="Amount" required>
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary w-100">Add</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card p-3 shadow-sm">
+      <h4 class="mb-3">Your Expenses</h4>
+      <ul class="list-group">
+        {% for category, amount, date in expenses %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>{{ date }} - {{ category }}</span>
+            <strong>${{ amount }}</strong>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="mt-4">
+      <a href="/loan_calculator" class="btn btn-outline-secondary">Go to Loan Calculator</a>
+    </div>
+  </div>
+</body>
+</html>

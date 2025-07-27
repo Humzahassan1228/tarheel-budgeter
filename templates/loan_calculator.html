@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Calculator - TarHeel Budgeter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Loan Calculator</h2>
+    <form method="POST" class="row g-3">
+      <div class="col-md-4">
+        <input type="number" step="0.01" name="loan" class="form-control" placeholder="Loan Amount" required>
+      </div>
+      <div class="col-md-4">
+        <input type="number" step="0.01" name="rate" class="form-control" placeholder="Interest Rate (%)" required>
+      </div>
+      <div class="col-md-4">
+        <input type="number" name="term" class="form-control" placeholder="Term (Years)" required>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-success">Calculate</button>
+      </div>
+    </form>
+    {% if result %}
+    <div class="alert alert-info text-center mt-4">
+      Estimated Monthly Payment: <strong>${{ result }}</strong>
+    </div>
+    {% endif %}
+    <div class="text-center mt-3">
+      <a href="/dashboard" class="btn btn-outline-primary">Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
